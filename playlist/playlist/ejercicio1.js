@@ -20,8 +20,9 @@ const usuario = {
     busquedaActiva: true // true si está en búsqueda, false si no esta en busqueda
 };
 
-// Muestra en pantalla la fecha de inicio del módulo de React
 /*
+// Muestra en pantalla la fecha de inicio del módulo de React
+
 const name = usuario.nombre;
 const lastname = usuario.apellidos;
 const moduloReact = usuario.temas.find(tema => tema.nombre === "React");
@@ -54,7 +55,7 @@ console.log("Búsqueda activa:", usuario.busquedaActiva ? "Sí" : "No");
 
 const name = usuario.nombre;
 const lastname = usuario.apellidos;
-const moduloNombre = "React"; // Cambia esto para buscar otros módulos
+const moduloNombre = "React"; // Cambiar para buscar otros módulos
 let modulo;
 
 switch (moduloNombre) {
