@@ -27,31 +27,31 @@ const createPlaylistManager = () => {
   
     const removePlaylist = (name) => {
         playlists.findIndex(playlist => playlist.name !== name)
-        /*
-        const index = playlists.findIndex(playlist => playlist.name === name);
-        if (index !== -1) {
-            playlists.splice(index, 1);
-        }
-            */
+        
     };
   
     const addSongToPlaylist = (playlistName, song) => {
         const playlist = playlists.find(track => track.name === playlistName);
-        if (playlist) {
-            const newSong = { ...song, favorite: false };
-            playlist.songs.push(newSong);
+        if (!playlist) {
+            console.error(`La lista de reproducción "${playlistName}" no fue encontrada.`);
+            return;
         }
+        const newSong = { ...song, favorite: false };
+        playlist.songs.push(newSong);
+        console.log(`La canción "${song.title}" ha sido agregada a la lista de reproducción "${playlistName}".`);
     };
+    
   
     const removeSongFromPlaylist = (playlistName, songTitle) => {
         const playlist = playlists.find(track => track.name === playlistName);
         if (playlist) {
-            const index = playlist.songs.findIndex(song => song.title === songTitle);
-            if (index !== -1) {
-                playlist.songs.splice(index, 1);
-            }
+            playlist.songs = playlist.songs.filter(song => song.title !== songTitle);
+            console.log(`La canción "${songTitle}" ha sido eliminada de la lista de reproducción "${playlistName}".`);
+        } else {
+            console.error(`La lista de reproducción "${playlistName}" no fue encontrada.`);
         }
     };
+    
   
     return {
         createPlaylist,
