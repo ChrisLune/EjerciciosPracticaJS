@@ -35,7 +35,6 @@ const datos = [
   
   const nombresProyectos = datos.map(desarrollador => desarrollador.proyectos.map(proyecto => proyecto.nombre));
   
-  // Ejecución de las funciones
   console.log(desarrolladoresJavascript);
   console.log(nombresProyectos.join(' , '));
   

@@ -6,12 +6,10 @@ const input1 = [
 ];
 
 function yourFunction(input) {
-    // Separa el último elemento y la extensión
-    const extension = input.pop(); // Elimina y obtiene el último elemento
-    // Junta el resto con '/' y añade la extensión al final
+    const extension = input.pop(); 
     const result = input.join('/') + '.' + extension;
     console.log(result);
-    return result; // retorna el resultado si es necesario
+    
 }
 
 yourFunction(input1); // 'Downloads/Videos/capture.mp4'

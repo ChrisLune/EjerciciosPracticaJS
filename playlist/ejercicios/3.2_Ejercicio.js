@@ -1,7 +1,7 @@
 function stringNumbers(number) {
-    const digits = number.toString().split(''); // Convertimos el número a string y luego a un array de dígitos
-    const result = digits.join('-'); // Unimos los dígitos con un guion
-    console.log(result); // Mostramos el resultado
+    const digits = number.toString().split(''); 
+    const result = digits.join('-'); 
+    console.log(result);
 }
 
 // Ejemplo de uso
