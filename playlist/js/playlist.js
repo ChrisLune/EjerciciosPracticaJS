@@ -14,11 +14,11 @@
  */
 
 const createPlaylistManager = () => {
-    const playlists = [];
+    let playlists = [];
   
     const createPlaylist = (name) => {
         const newPlaylist = { name, songs: [] };
-        playlists.push(newPlaylist);
+        playlists = [...playlists, newPlaylist];
     };
   
     const getAllPlaylists = () => {
@@ -26,30 +26,28 @@ const createPlaylistManager = () => {
     };
   
     const removePlaylist = (name) => {
-        playlists.findIndex(playlist => playlist.name !== name)
+        playlists = playlists.filter(playlist => playlist.name !== name);
         
     };
   
     const addSongToPlaylist = (playlistName, song) => {
-        const playlist = playlists.find(track => track.name === playlistName);
-        if (!playlist) {
-            console.error(`La lista de reproducción "${playlistName}" no fue encontrada.`);
-            return;
-        }
         const newSong = { ...song, favorite: false };
-        playlist.songs.push(newSong);
-        console.log(`La canción "${song.title}" ha sido agregada a la lista de reproducción "${playlistName}".`);
+        playlists = playlists.map(playlist => {
+            if (playlist.name === playlistName) {
+                return { ...playlist, songs: [...playlist.songs, newSong] };
+            }
+            return playlist;
+        });
     };
     
   
     const removeSongFromPlaylist = (playlistName, songTitle) => {
-        const playlist = playlists.find(track => track.name === playlistName);
-        if (playlist) {
-            playlist.songs = playlist.songs.filter(song => song.title !== songTitle);
-            console.log(`La canción "${songTitle}" ha sido eliminada de la lista de reproducción "${playlistName}".`);
-        } else {
-            console.error(`La lista de reproducción "${playlistName}" no fue encontrada.`);
-        }
+        playlists = playlists.map(playlist => {
+            if (playlist.name === playlistName) {
+                return { ...playlist, songs: playlist.songs.filter(song => song.title !== songTitle) };
+            }
+            return playlist;
+        });
     };
     
   
